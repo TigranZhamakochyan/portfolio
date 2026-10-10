@@ -86,3 +86,29 @@ h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
+section {
+  margin-bottom: 2em;
+}
+
+section h2 {
+  border-bottom: 1px solid oklch(80% 3% 200);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.8em;
+}
+
+section article {
+  margin-bottom: 1.5em;
+}
+
+section h3 {
+  margin-bottom: 0.2em;
+}
+
+section header p {
+  margin: 0.2em 0;
+}
+
+section ul {
+  margin-top: 0.5em;
+}

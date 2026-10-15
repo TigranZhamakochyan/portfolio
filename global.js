@@ -5,14 +5,6 @@ function $$(selector, context = document) {
   return Array.from(context.querySelectorAll(selector));
 }
 
-// let navLinks = $$("nav a");
-
-// let currentLink = navLinks.find(
-//   (a) => a.host === location.host && a.pathname === location.pathname,
-// );
-// currentLink?.classList.add('current');
-
-
 let pages = [
   { url: '', title: 'Home' },
   { url: 'projects/', title: 'Projects' },
@@ -24,7 +16,10 @@ let pages = [
 let nav = document.createElement('nav');
 document.querySelector('h1').after(nav);
 
-const BASE_PATH = "/portfolio/";
+const BASE_PATH =
+  (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+    ? '/'
+    : '/portfolio/';
 
 for (let p of pages) {
   let url = p.url;
@@ -34,8 +29,13 @@ for (let p of pages) {
     url = BASE_PATH + url;
   }
 
-  nav.insertAdjacentHTML(
-    'beforeend',
-    `<a href="${url}">${title}</a>`
-  );
+let a = document.createElement('a');
+a.href = url;
+a.textContent = title;
+
+if (a.host === location.host && a.pathname === location.pathname) {
+  a.classList.add('current');
+}
+
+nav.append(a);
 }

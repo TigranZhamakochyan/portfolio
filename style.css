@@ -5,6 +5,13 @@
 html {
   color-scheme: light dark;
 }
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
 
 body {
   font: 100%/1.5 system-ui;
@@ -63,7 +70,8 @@ button {
 
 input,
 textarea,
-button {
+button,
+select {
   font: inherit;
   box-sizing: border-box;
 }

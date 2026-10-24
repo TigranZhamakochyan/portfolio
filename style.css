@@ -128,3 +128,28 @@ section header p {
 section ul {
   margin-top: 0.5em;
 }
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5em 2em;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: gray;
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 2.5em;
+}
+
+
+.latest-projects-title {
+  font-size: 2.2em;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}

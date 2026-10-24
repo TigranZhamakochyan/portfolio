@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Portfolio",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Personal portfolio website built with HTML, CSS, and JavaScript, featuring reusable components, dynamic project rendering, theme switching, and GitHub API integration."
+  },
+  {
+    "title": "Git Exercise: Merge Conflicts",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "COGS 108 Git exercise focused on working with branches, resolving merge conflicts, committing changes, and pushing updates through GitHub."
+  },
+  {
+    "title": "Resolve Merge Conflicts",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "GitHub Skills exercise focused on identifying and resolving merge conflicts while practicing collaborative version control workflows."
+  },
+  {
+    "title": "Review Pull Requests",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "GitHub Skills exercise for practicing pull request reviews and learning how changes are discussed and reviewed in collaborative software projects."
+  },
+  {
+    "title": "Introduction to GitHub",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Introductory GitHub exercise covering repositories, branches, commits, pull requests, and the basic GitHub development workflow."
+  },
+  {
+    "title": "Power Outages Analysis",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Data science project analyzing power outage data and presenting findings through a reproducible data analysis workflow."
+  },
+  {
+    "title": "N-Gram Language Model",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Built Uniform, Unigram, and N-gram language models from scratch using pandas, including ancestral sampling for generating text from Gutenberg corpora."
+  },
+  {
+    "title": "GigabyteAI",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Jupyter Notebook project exploring data science and artificial intelligence techniques through an experimental analysis workflow."
+  },
+  {
+    "title": "Taylor Swift Music Analytics",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Analyzed Taylor Swift music data using exploratory data analysis and built a content-based recommender using Euclidean distance over Spotify-style audio features."
+  },
+  {
+    "title": "Friends Data Analysis",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Analyzed the Friends dataset using pandas, grouping, joins, visualization, permutation testing, bootstrapping, and dialogue-level analysis."
+  },
+  {
+    "title": "Tweetlike",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Interactive Streamlit application where users guess which celebrity wrote a tweet and experiment with a TF-IDF and Logistic Regression machine learning pipeline."
+  },
+  {
+    "title": "DSC 20 Project",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Python programming project completed for DSC 20, applying object-oriented programming, program design, and problem-solving concepts."
+  }
+]

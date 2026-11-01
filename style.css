@@ -13,11 +13,11 @@ html {
 }
 
 
+
 body {
   font: 100%/1.5 system-ui;
   max-width: 100ch;
-  margin-left: 2em;
-  margin-right: auto;
+  margin-inline: auto;
   padding: 1em;
 }
 
@@ -152,4 +152,77 @@ section ul {
   font-size: 2.2em;
   margin-top: 1.5em;
   margin-bottom: 1em;
+}
+
+.project-year {
+  color: gray;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-style: italic;
+}
+
+
+#projects-pie-plot {
+  width: 100%;
+  max-width: 20em;
+  flex-shrink: 0;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path {
+  transition: opacity 300ms;
+}
+
+
+
+
+.swatch {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--color);
+  border-radius: 0.2em;
+}
+
+
+.legend {
+  flex: 1;
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+
+  border: 1px solid #888;
+  border-radius: 0.5em;
+  padding: 1em;
+  margin-block: 2em;
+}
+
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+path.selected {
+  fill: var(--color);
 }

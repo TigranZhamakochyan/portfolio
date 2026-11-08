@@ -309,3 +309,23 @@ circle:hover {
 circle.selected {
   fill: #ff6b6b;
 }
+
+
+#language-breakdown {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5em 1em;
+}
+
+#language-breakdown dt {
+  grid-row: 1;
+  font-size: 0.9em;
+  color: gray;
+  text-transform: uppercase;
+}
+
+#language-breakdown dd {
+  grid-row: 2;
+  font-size: 1.2em;
+  margin: 0;
+  white-space: nowrap;
+}

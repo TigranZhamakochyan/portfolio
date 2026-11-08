@@ -338,3 +338,8 @@ circle.selected {
 body {
   padding-bottom: 15em;
 }
+
+#selection-count,
+#language-breakdown {
+  overflow-anchor: none;
+}

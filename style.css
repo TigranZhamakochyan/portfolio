@@ -312,8 +312,9 @@ circle.selected {
 
 
 #language-breakdown {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5em 1em;
+  min-height: 100px;
 }
 
 #language-breakdown dt {
@@ -328,4 +329,12 @@ circle.selected {
   font-size: 1.2em;
   margin: 0;
   white-space: nowrap;
+}
+
+#selection-count {
+  min-height: 1.5em;
+}
+
+body {
+  padding-bottom: 15em;
 }

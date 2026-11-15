@@ -1,4 +1,11 @@
 [
+    {
+    "title": "Bikewatching",
+    "year": 2026,
+    "image": "../images/bikewatching.png",
+    "description": "Interactive geospatial visualization of Boston and Cambridge bike networks using Mapbox GL JS and D3.js. Features bike station traffic analysis, time-based filtering, and color-coded arrival and departure patterns.",
+    "url": "https://tigranzhamakochyan.github.io/bikewatching/"
+  },
   {
     "title": "Portfolio",
     "year": 2026,

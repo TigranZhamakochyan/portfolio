@@ -467,3 +467,48 @@ body {
   width: 100%;
   height: auto;
 }
+/* ---------- Meta page layout (scoped to <body class="meta-page">) ---------- */
+
+/* Adjust this one value to make the Meta content wider or narrower */
+.meta-page {
+  --meta-content-width: 1200px;
+}
+
+/*
+  The body keeps the global 100ch width, so the title and nav match other pages.
+  <main class="meta-content"> breaks out of it: its width is the smaller of the
+  setting above and the viewport minus a gutter, and the equal margins on both
+  sides (negative when wider than the body) keep it centered.
+*/
+.meta-content {
+  --w: min(var(--meta-content-width), 100vw - 2rem);
+  width: var(--w);
+  margin-inline: calc((100% - var(--w)) / 2);
+}
+
+/* ~35% story / ~65% scatter plot */
+.meta-page #scatter-story {
+  flex: 35;
+}
+
+.meta-page #scatter-plot {
+  flex: 65;
+  padding-left: 1.5rem; /* room for the y-axis labels */
+}
+
+/* Keep the chart within the sticky area on wide screens */
+.meta-page #scatter-plot svg {
+  max-height: 70vh;
+}
+
+/* On narrow screens, give the plot a bit more of the row */
+@media (max-width: 700px) {
+  .meta-page #scatter-story {
+    flex: 1;
+  }
+
+  .meta-page #scatter-plot {
+    flex: 1;
+    padding-left: 1rem;
+  }
+}

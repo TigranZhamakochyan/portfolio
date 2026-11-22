@@ -8,48 +8,50 @@
     <script type="module" src="../global.js"></script>
     <script type="module" src="main.js"></script>
 </head>
-<body>
+<body class="meta-page">
     <h1>Meta</h1>
-    <p>This page includes stats about the code of this website.</p>
+    <main class="meta-content">
+        <p>This page includes stats about the code of this website.</p>
 
-    <div id="stats"></div>
+        <div id="stats"></div>
 
-    <h2>Commits by time of day</h2>
-    <div id="scrolly-1">
-        <div id="scatter-story"></div>
-        <div id="scatter-plot">
-            <div id="chart"></div>
+        <h2>Commits by time of day</h2>
+        <div id="scrolly-1">
+            <div id="scatter-story"></div>
+            <div id="scatter-plot">
+                <div id="chart"></div>
 
-            <p id="selection-count">No commits selected</p>
-            <dl id="language-breakdown" class="stats"></dl>
+                <p id="selection-count">No commits selected</p>
+                <dl id="language-breakdown" class="stats"></dl>
+            </div>
         </div>
-    </div>
 
-    <dl id="commit-tooltip" class="info tooltip" hidden>
-        <dt>Commit</dt>
-        <dd>
-            <a href="" id="commit-link" target="_blank"></a>
-        </dd>
+        <dl id="commit-tooltip" class="info tooltip" hidden>
+            <dt>Commit</dt>
+            <dd>
+                <a href="" id="commit-link" target="_blank"></a>
+            </dd>
 
-        <dt>Date</dt>
-        <dd id="commit-date"></dd>
+            <dt>Date</dt>
+            <dd id="commit-date"></dd>
 
-        <dt>Time</dt>
-        <dd id="commit-tooltip-time"></dd>
+            <dt>Time</dt>
+            <dd id="commit-tooltip-time"></dd>
 
-        <dt>Author</dt>
-        <dd id="commit-author"></dd>
+            <dt>Author</dt>
+            <dd id="commit-author"></dd>
 
-        <dt>Lines edited</dt>
-        <dd id="commit-lines"></dd>
-    </dl>
+            <dt>Lines edited</dt>
+            <dd id="commit-lines"></dd>
+        </dl>
 
-    <h2>The race for the biggest file</h2>
-    <div id="scrolly-2">
-        <div id="files-plot">
-            <dl id="files"></dl>
+        <h2>The race for the biggest file</h2>
+        <div id="scrolly-2">
+            <div id="files-plot">
+                <dl id="files"></dl>
+            </div>
+            <div id="files-story"></div>
         </div>
-        <div id="files-story"></div>
-    </div>
+    </main>
 </body>
 </html>

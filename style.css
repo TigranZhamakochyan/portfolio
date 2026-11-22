@@ -365,3 +365,23 @@ body {
   color: steelblue;
   text-decoration: underline;
 }
+#slider-container {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+}
+
+#slider-container label {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+#slider-container input[type="range"] {
+  flex: 1;
+}
+
+#slider-container time {
+  margin-left: auto;
+}

@@ -1,4 +1,5 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
 let xScale;
 let yScale;
 async function loadData() {
@@ -43,7 +44,8 @@ function processCommits(data) {
       });
 
       return ret;
-    });
+    })
+    .sort((a, b) => a.datetime - b.datetime);
 }
 
 
@@ -349,46 +351,105 @@ function updateScatterPlot(data, commits) {
     });
 }
 
+// Maps technology (line type) to a color; shared across updates so colors stay stable
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+function updateFileDisplay(filteredCommits) {
+  const lines = filteredCommits.flatMap((d) => d.lines);
+  const files = d3
+    .groups(lines, (d) => d.file)
+    .map(([name, lines]) => ({ name, lines }))
+    .sort((a, b) => b.lines.length - a.lines.length);
+
+  const filesContainer = d3
+    .select('#files')
+    .selectAll('div')
+    .data(files, (d) => d.name)
+    .join(
+      // Only runs when a file's div is first created
+      (enter) =>
+        enter.append('div').call((div) => {
+          div.append('dt');
+          div.append('dd');
+        }),
+    );
+
+  // Runs for every file on each update
+  filesContainer
+    .select('dt')
+    .html((d) => `<code>${d.name}</code><small>${d.lines.length} lines</small>`);
+
+  // One dot per line of code
+  filesContainer
+    .select('dd')
+    .selectAll('div')
+    .data((d) => d.lines)
+    .join('div')
+    .attr('class', 'loc')
+    .attr('style', (d) => `--color: ${colors(d.type)}`);
+}
+
 let data = await loadData();
 let commits = processCommits(data);
 
 renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 
-// Evolution slider
-let commitProgress = 100;
-
-let timeScale = d3
-  .scaleTime()
-  .domain([
-    d3.min(commits, (d) => d.datetime),
-    d3.max(commits, (d) => d.datetime),
-  ])
-  .range([0, 100]);
-
-let commitMaxTime = timeScale.invert(commitProgress);
-
-// Will get updated as user changes slider
+// Filtering state: updated as the reader scrolls through the story
+let commitMaxTime = d3.max(commits, (d) => d.datetime);
 let filteredCommits = commits;
 
-const slider = document.getElementById('commit-progress');
-const commitTimeEl = document.getElementById('commit-time');
-
-function onTimeSliderChange() {
-  commitProgress = Number(slider.value);
-  commitMaxTime = timeScale.invert(commitProgress);
-  commitTimeEl.textContent = commitMaxTime.toLocaleString('en', {
-    dateStyle: 'long',
-    timeStyle: 'short',
-  });
-  commitTimeEl.dateTime = commitMaxTime.toISOString();
-
+function updateForTime(maxTime) {
+  commitMaxTime = maxTime;
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
   const filteredData = filteredCommits.flatMap((d) => d.lines);
 
   updateScatterPlot(data, filteredCommits);
   renderCommitInfo(filteredData, filteredCommits);
+  updateFileDisplay(filteredCommits);
 }
 
-slider.addEventListener('input', onTimeSliderChange);
-onTimeSliderChange();
+updateForTime(commitMaxTime);
+
+// Scrollytelling: one narrative step per commit
+function commitStepHtml(d, i) {
+  const fileCount = d3.rollups(
+    d.lines,
+    (D) => D.length,
+    (d) => d.file,
+  ).length;
+
+  return `
+    On ${d.datetime.toLocaleString('en', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    })},
+    I made <a href="${d.url}" target="_blank">${
+      i > 0 ? 'another commit' : 'my first commit, and it was great'
+    }</a>.
+    I edited ${d.totalLines} lines across ${fileCount} files.
+    Then I looked over all I had made, and I saw that it was very good.
+  `;
+}
+
+for (const storyId of ['#scatter-story', '#files-story']) {
+  d3.select(storyId)
+    .selectAll('.step')
+    .data(commits)
+    .join('div')
+    .attr('class', 'step')
+    .html(commitStepHtml);
+}
+
+function onStepEnter(response) {
+  updateForTime(response.element.__data__.datetime);
+}
+
+for (const scrollyId of ['#scrolly-1', '#scrolly-2']) {
+  scrollama()
+    .setup({
+      container: scrollyId,
+      step: `${scrollyId} .step`,
+    })
+    .onStepEnter(onStepEnter);
+}
